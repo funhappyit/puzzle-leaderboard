@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/puzzle_leaderboard?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+    driver-class-name: org.mariadb.jdbc.Driver
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  jpa:
+    show-sql: true
+
+logging:
+  level:
+    com.example.leaderboard: DEBUG

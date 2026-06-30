@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: puzzle-leaderboard
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
