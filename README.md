@@ -182,8 +182,8 @@ npm run dev
 
 - [x] **1주차** — 기본 CRUD + DB 스키마 + 로컬 환경 구성
 - [x] **2주차** — Redis ZSET 랭킹 + Redisson 분산락 + Redis Rate Limiting + Java 전환
-- [ ] **3주차** — JMeter 부하 테스트 + 성능 비교 수치 기록
-- [ ] **4주차** — AWS ECS 배포 + GitHub Actions CI/CD + Terraform
+- [ ] **3주차** — JMeter 부하 테스트 + 성능 비교 수치 기록 ([#4](https://github.com/funhappyit/puzzle-leaderboard/issues/4))
+- [ ] **4주차** — AWS ECS Fargate + Terraform + GitHub Actions CI/CD 배포 자동화 ([#7](https://github.com/funhappyit/puzzle-leaderboard/issues/7))
 
 ---
 
