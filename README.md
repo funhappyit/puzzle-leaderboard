@@ -168,13 +168,18 @@ npm run dev
 
 > 3주차 완료 후 업데이트 예정
 
-**시나리오**: 100 스레드 × 10회 = 1,000건 동시 점수 제출
+**시나리오**: 100 스레드 × 10회 = 1,000건 동시 점수 제출 (로컬 환경 기준)
 
-| 케이스 | TPS | 평균 응답시간 | 오류율 | 중복/누락 |
-|--------|-----|-------------|--------|-----------|
-| 락 없음 (DB) | - | - | - | - |
-| Redis ZINCRBY (원자연산) | - | - | - | - |
-| Redisson 분산락 | - | - | - | - |
+| 케이스 | TPS | 평균 응답시간 | 90% Line | 99% Line | 오류율 |
+|--------|:---:|:----------:|:--------:|:--------:|:-----:|
+| 케이스1 - 락 없음 (DB only) | **740.7/sec** | 31ms | 55ms | 67ms | 0% |
+| 케이스2 - Redis ZINCRBY (원자연산) | **816.3/sec** | 25ms | 39ms | 51ms | 0% |
+| 케이스3 - Redisson 분산락 | **286.9/sec** | 232ms | 414ms | 573ms | 0% |
+
+**분석**
+- 케이스1 → 케이스2: Redis ZINCRBY 원자연산으로 **TPS 10% 향상**, 응답시간 단축
+- 케이스2 → 케이스3: Redisson 분산락은 직렬화로 인해 **TPS 65% 감소**, 응답시간 약 9배 증가
+- 분산락은 성능보다 **정확성(Race Condition 방지)** 이 목적 — 오류율 0% 유지하며 데이터 정합성 보장
 
 ---
 
@@ -182,8 +187,8 @@ npm run dev
 
 - [x] **1주차** — 기본 CRUD + DB 스키마 + 로컬 환경 구성
 - [x] **2주차** — Redis ZSET 랭킹 + Redisson 분산락 + Redis Rate Limiting + Java 전환
-- [ ] **3주차** — JMeter 부하 테스트 + 성능 비교 수치 기록
-- [ ] **4주차** — AWS ECS 배포 + GitHub Actions CI/CD + Terraform
+- [ ] **3주차** — JMeter 부하 테스트 + 성능 비교 수치 기록 ([#4](https://github.com/funhappyit/puzzle-leaderboard/issues/4))
+- [ ] **4주차** — AWS ECS Fargate + Terraform + GitHub Actions CI/CD 배포 자동화 ([#7](https://github.com/funhappyit/puzzle-leaderboard/issues/7))
 
 ---
 
