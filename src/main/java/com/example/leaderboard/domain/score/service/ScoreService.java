@@ -30,6 +30,7 @@ public class ScoreService {
     private final RedisTemplate<String, String> redisTemplate;
     private final RedissonClient redissonClient;
 
+    // 케이스 3: Redisson 분산락 + Rate Limiting (기본)
     @Transactional
     public ScoreResponse submitScore(ScoreSubmitRequest request) {
         if (!userRepository.existsById(request.getUserId())) {
@@ -64,6 +65,40 @@ public class ScoreService {
                 lock.unlock();
             }
         }
+    }
+
+    // 케이스 1: 락 없음 — DB INSERT만, Race Condition 재현용
+    @Transactional
+    public ScoreResponse submitNoLock(ScoreSubmitRequest request) {
+        if (!userRepository.existsById(request.getUserId())) {
+            throw new NoSuchElementException("유저를 찾을 수 없습니다. id=" + request.getUserId());
+        }
+
+        PuzzleScore score = scoreRepository.save(
+                new PuzzleScore(request.getUserId(), request.getPuzzleId(), request.getScore(), request.getElapsedSec(), true)
+        );
+
+        String zsetKey = "ranking:" + request.getPuzzleId();
+        redisTemplate.opsForZSet().incrementScore(zsetKey, String.valueOf(request.getUserId()), request.getScore());
+
+        return ScoreResponse.from(score);
+    }
+
+    // 케이스 2: Redis ZINCRBY 원자연산만 — 락 없이 Redis만 사용
+    @Transactional
+    public ScoreResponse submitRedisOnly(ScoreSubmitRequest request) {
+        if (!userRepository.existsById(request.getUserId())) {
+            throw new NoSuchElementException("유저를 찾을 수 없습니다. id=" + request.getUserId());
+        }
+
+        String zsetKey = "ranking:" + request.getPuzzleId();
+        redisTemplate.opsForZSet().incrementScore(zsetKey, String.valueOf(request.getUserId()), request.getScore());
+
+        PuzzleScore score = scoreRepository.save(
+                new PuzzleScore(request.getUserId(), request.getPuzzleId(), request.getScore(), request.getElapsedSec(), true)
+        );
+
+        return ScoreResponse.from(score);
     }
 
     private boolean checkRateLimit(Long userId, String puzzleId) {
