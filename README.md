@@ -189,5 +189,5 @@ npm run dev
 
 ## 🔗 관련 링크
 
-- [GitHub Issues](https://github.com/amiesoft-hyk/puzzle-leaderboard/issues)
+- [GitHub Issues](https://github.com/funhappyit/puzzle-leaderboard/issues)
 - [Frontend Dashboard](https://puzzle-leaderboard.vercel.app) _(4주차 배포 예정)_
