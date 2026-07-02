@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
 
 spring:
   datasource:
@@ -9,12 +9,10 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
   data:
     redis:
-      host: ${REDIS_HOST}
-      port: 6379
+      url: ${REDIS_URL}
   jpa:
     show-sql: false
 
-# CORS: Vercel 배포 도메인 허용
 web:
   cors:
     allowed-origins: ${CORS_ALLOWED_ORIGINS:https://puzzle-leaderboard.vercel.app}
