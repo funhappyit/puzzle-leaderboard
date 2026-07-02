@@ -27,7 +27,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.flywaydb:flyway-mysql")
     implementation("org.redisson:redisson-spring-boot-starter:3.27.2")
-    runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
+    runtimeOnly("com.mysql:mysql-connector-j")
 
     testCompileOnly("org.projectlombok:lombok")
     testAnnotationProcessor("org.projectlombok:lombok")
