@@ -4,7 +4,7 @@ CREATE TABLE daily_ranking_snapshots
     user_id       BIGINT      NOT NULL,
     snapshot_date DATE        NOT NULL,
     puzzle_id     VARCHAR(50) NOT NULL,
-    rank          INT         NOT NULL,
+    `rank`        INT         NOT NULL,
     total_score   BIGINT      NOT NULL,
     created_at    DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
