@@ -10,16 +10,24 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RedissonConfig {
 
-    @Value("${spring.data.redis.host}")
+    // prod: REDIS_URL (rediss://default:token@host:port)
+    // local: redis://localhost:6379 (host+port 조합)
+    @Value("${spring.data.redis.url:}")
+    private String redisUrl;
+
+    @Value("${spring.data.redis.host:localhost}")
     private String host;
 
-    @Value("${spring.data.redis.port}")
+    @Value("${spring.data.redis.port:6379}")
     private int port;
 
     @Bean
     public RedissonClient redissonClient() {
         Config config = new Config();
-        config.useSingleServer().setAddress("redis://" + host + ":" + port);
+        String address = redisUrl.isBlank()
+                ? "redis://" + host + ":" + port
+                : redisUrl;
+        config.useSingleServer().setAddress(address);
         return Redisson.create(config);
     }
 }
