@@ -188,12 +188,24 @@ npm run dev
 - [x] **2주차** — Redis ZSET 랭킹 + Redisson 분산락 + Redis Rate Limiting + Java 전환
 - [x] **3주차** — JMeter 부하 테스트 + 성능 비교 수치 기록 ([#4](https://github.com/funhappyit/puzzle-leaderboard/issues/4))
 - [x] **4주차** — AWS ECS Fargate + Terraform + GitHub Actions CI/CD 코드 작성 ([#7](https://github.com/funhappyit/puzzle-leaderboard/issues/7))
-- [ ] **배포** — Render + Aiven(MySQL) + Upstash(Redis) 무료 클라우드 실배포 ([#9](https://github.com/funhappyit/puzzle-leaderboard/issues/9))
+- [x] **배포** — Render + Aiven(MySQL) + Upstash(Redis) 무료 클라우드 실배포 ([#9](https://github.com/funhappyit/puzzle-leaderboard/issues/9))
+
+---
+
+## 🖼 배포 스크린샷
+
+### 프론트엔드 — 퍼즐 리더보드 대시보드 (Vercel)
+
+![Frontend Dashboard](docs/screenshot-frontend.jpg)
+
+### 백엔드 — Render 배포 이벤트
+
+![Render Deploy Events](docs/screenshot-render.jpg)
 
 ---
 
 ## 🔗 관련 링크
 
 - [GitHub Issues](https://github.com/funhappyit/puzzle-leaderboard/issues)
-- [Frontend Dashboard](https://puzzle-leaderboard.vercel.app)
-- [Backend API](https://puzzle-leaderboard.koyeb.app) _(배포 진행 중)_
+- [Frontend Dashboard](https://puzzle-leaderboard-five.vercel.app)
+- [Backend API](https://puzzle-leaderboard-jg58.onrender.com)
