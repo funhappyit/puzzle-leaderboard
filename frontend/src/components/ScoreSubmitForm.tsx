@@ -18,12 +18,7 @@ export function ScoreSubmitForm({ puzzleId, onSubmitted }: Props) {
     setLoading(true)
     setMessage(null)
     try {
-      await submitScore({
-        userId: Number(userId),
-        puzzleId,
-        score: Number(score),
-        elapsedSec: Number(elapsedSec),
-      })
+      await submitScore(Number(userId), puzzleId, Number(score), Number(elapsedSec))
       setMessage('점수가 제출되었습니다.')
       onSubmitted()
     } catch {
