@@ -7,6 +7,15 @@
 
 ---
 
+## 🔗 관련 링크
+
+- [GitHub Issues](https://github.com/funhappyit/puzzle-leaderboard/issues)
+- [Frontend Dashboard](https://puzzle-leaderboard-five.vercel.app)
+- [Backend API](https://puzzle-leaderboard-jg58.onrender.com)
+- [기술 블로그 글](https://hanyugyeong.tistory.com/215)
+
+---
+
 ## 📌 프로젝트 개요
 
 동시 요청 상황에서의 안전한 점수 집계와, Redis 기반 캐싱으로 빠른 랭킹 조회를 구현한 프로젝트.
@@ -202,12 +211,3 @@ npm run dev
 ### 백엔드 — Render 배포 이벤트
 
 ![Render Deploy Events](docs/screenshot-render.jpg)
-
----
-
-## 🔗 관련 링크
-
-- [GitHub Issues](https://github.com/funhappyit/puzzle-leaderboard/issues)
-- [Frontend Dashboard](https://puzzle-leaderboard-five.vercel.app)
-- [Backend API](https://puzzle-leaderboard-jg58.onrender.com)
-- [기술 블로그 글](https://hanyugyeong.tistory.com/215)
