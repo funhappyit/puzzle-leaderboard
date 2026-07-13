@@ -12,7 +12,7 @@
 - [GitHub Issues](https://github.com/funhappyit/puzzle-leaderboard/issues)
 - [Frontend Dashboard](https://puzzle-leaderboard-five.vercel.app)
 - [Backend API](https://puzzle-leaderboard-jg58.onrender.com)
-- [기술 블로그 글](https://amiesoft-hyk.github.io/posts/puzzle-leaderboard-tech-stack/)
+- [기술 블로그 글](https://funhappyit.github.io/posts/puzzle-leaderboard-tech-stack/)
 
 ---
 
